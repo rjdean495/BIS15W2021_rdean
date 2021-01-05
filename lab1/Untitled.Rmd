@@ -1,0 +1,29 @@
+---
+title: "Test Markdown"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# This is my first Markdown file
+## This is my first Markdown file
+### This is my first Markdown file
+```{r}
+4*2
+```
+
+## This is my [email](mailto:rjdean@ucdavis.edu)
+
+## This is [Google](http://www.google.com)
+
+```{r message=FALSE, warning=FALSE}
+#install.packages("tidyverse")
+library("tidyverse")
+```
+```{r}
+ggplot(mtcars, aes(x = factor(cyl))) +
+    geom_bar()
