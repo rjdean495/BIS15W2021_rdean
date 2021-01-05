@@ -1,6 +1,6 @@
 ---
 title: "Dummy Push"
-author: "Your Name"
+author: "Richard J. Dean"
 date: "`r Sys.Date()`"
 output: html_document
 ---
