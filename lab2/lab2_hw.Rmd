@@ -60,13 +60,12 @@ cbind(data.matrix, Avg.)
 
 8. Show Susan's value for Opal Spring only.
 ```{r}
-data.matrix [,3]
+data.matrix [2,3]
 ```
 
 9. Calculate the mean for Jill's column only.  
 ```{r}
-Jill <- data.matrix [,1]
-mean(Jill)
+mean(data.matrix [,1])
 ```
 
 10. Use the data matrix to perform one calculation or operation of your interest.
