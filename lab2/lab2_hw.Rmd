@@ -17,7 +17,7 @@ Make sure to use the formatting conventions of RMarkdown to make your report nea
 A vector in R is an object that refers back to stored data or multiples of a similar type (e.g. letters or integers etc.)
 
 2. What is a data matrix in R?  
-A data matris is a collection of data points arranged in rows and columns for organizational purposes
+A data matrix is a collection of data points arranged in rows and columns for organizational purposes
 
 3. Below are data collected by three scientists (Jill, Steve, Susan in order) measuring temperatures of eight hot springs. Run this code chunk to create the vectors.  
 ```{r}
