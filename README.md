@@ -1,8 +1,3 @@
----
-output: 
-  html_document: 
-    keep_md: yes
----
 # Richard's BIS 15L Repository
 
 Welcome! This is my repository which includes all of the .rmd files and data that I have used in class. Feel free to look around.  
