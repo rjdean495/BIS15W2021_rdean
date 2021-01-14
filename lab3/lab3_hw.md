@@ -1,7 +1,7 @@
 ---
 title: "Lab 3 Homework"
 author: "Richard J. Dean"
-date: "2021-01-13"
+date: "2021-01-14"
 output:
   html_document: 
     theme: spacelab
@@ -31,6 +31,10 @@ getwd()
 ## [1] "/Users/richarddean/Desktop/BIS15W2021_rdean/lab3"
 ```
 
+```r
+data()
+```
+This data set was taken from V. M. Savage and G. B. West. A quantitative, theoretical framework for understanding mammalian sleep. Proceedings of the National Academy of Sciences, 104 (3):1051-1056, 2007.   
 2. Store these data into a new data frame `sleep`.
 
 ```r
@@ -209,8 +213,9 @@ sleep
 ## 83         <NA>         9.8       2.4   0.3500000 14.20 0.05040    4.230
 ```
 
-3. What are the dimensions of this data frame (variables and observations)? How do you know? Please show the *code* that you used to determine this below.  
-There are 83 variables and 11 observations within this data set. I know this from the dim code function which tells me what the dimensions for the data set I choose to input into the code.
+3. What are the dimensions of this data frame (variables and observations)? How do you know? Please show the *code* that you used to determine this below.     
+There are 83 variables and 11 observations within this data set. 
+I know this from the dim code function which tells me what the dimensions for the data set I choose to input into the code.
 
 ```r
 dim(sleep)
@@ -220,7 +225,7 @@ dim(sleep)
 ## [1] 83 11
 ```
 
-4. Are there any NAs in the data? How did you determine this? Please show your code.
+4. Are there any NAs in the data? How did you determine this? Please show your code.    
 Yes, there are NA values. I determined this by using the code shown below which displays a table which signifies whether there is an NA at that data point (true) or an integer/character other than NA (false). I also used the anyNA code function which just tells me whether or not there are any NA characters at any of the data points.
 
 ```r

@@ -23,21 +23,23 @@ library(tidyverse)
 ```{r}
 help()
 getwd()
+data()
 ```
-
+This data set was taken from V. M. Savage and G. B. West. A quantitative, theoretical framework for understanding mammalian sleep. Proceedings of the National Academy of Sciences, 104 (3):1051-1056, 2007.   
 2. Store these data into a new data frame `sleep`.
 ```{r}
 sleep <- data.frame(msleep)
 sleep
 ```
 
-3. What are the dimensions of this data frame (variables and observations)? How do you know? Please show the *code* that you used to determine this below.  
-There are 83 variables and 11 observations within this data set. I know this from the dim code function which tells me what the dimensions for the data set I choose to input into the code.
+3. What are the dimensions of this data frame (variables and observations)? How do you know? Please show the *code* that you used to determine this below.     
+There are 83 variables and 11 observations within this data set. 
+I know this from the dim code function which tells me what the dimensions for the data set I choose to input into the code.
 ```{r}
 dim(sleep)
 ```
 
-4. Are there any NAs in the data? How did you determine this? Please show your code.
+4. Are there any NAs in the data? How did you determine this? Please show your code.    
 Yes, there are NA values. I determined this by using the code shown below which displays a table which signifies whether there is an NA at that data point (true) or an integer/character other than NA (false). I also used the anyNA code function which just tells me whether or not there are any NA characters at any of the data points.
 ```{r}
 is.na(sleep)

@@ -11,7 +11,7 @@
 
 <meta name="author" content="Richard J. Dean" />
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-01-14" />
 
 <title>Lab 3 Homework</title>
 
@@ -399,7 +399,7 @@ summary {
 
 <h1 class="title toc-ignore">Lab 3 Homework</h1>
 <h4 class="author">Richard J. Dean</h4>
-<h4 class="date">2021-01-13</h4>
+<h4 class="date">2021-01-14</h4>
 
 </div>
 
@@ -421,9 +421,9 @@ summary {
 <pre class="r"><code>help()
 getwd()</code></pre>
 <pre><code>## [1] &quot;/Users/richarddean/Desktop/BIS15W2021_rdean/lab3&quot;</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Store these data into a new data frame <code>sleep</code>.</li>
-</ol>
+<pre class="r"><code>data()</code></pre>
+<p>This data set was taken from V. M. Savage and G. B. West. A quantitative, theoretical framework for understanding mammalian sleep. Proceedings of the National Academy of Sciences, 104 (3):1051-1056, 2007.<br />
+2. Store these data into a new data frame <code>sleep</code>.</p>
 <pre class="r"><code>sleep &lt;- data.frame(msleep)
 sleep</code></pre>
 <pre><code>##                              name         genus    vore           order
@@ -601,7 +601,8 @@ There are 83 variables and 11 observations within this data set. I know this fro
 <pre class="r"><code>dim(sleep)</code></pre>
 <pre><code>## [1] 83 11</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Are there any NAs in the data? How did you determine this? Please show your code. Yes, there are NA values. I determined this by using the code shown below which displays a table which signifies whether there is an NA at that data point (true) or an integer/character other than NA (false). I also used the anyNA code function which just tells me whether or not there are any NA characters at any of the data points.</li>
+<li>Are there any NAs in the data? How did you determine this? Please show your code.<br />
+Yes, there are NA values. I determined this by using the code shown below which displays a table which signifies whether there is an NA at that data point (true) or an integer/character other than NA (false). I also used the anyNA code function which just tells me whether or not there are any NA characters at any of the data points.</li>
 </ol>
 <pre class="r"><code>is.na(sleep)</code></pre>
 <pre><code>##        name genus  vore order conservation sleep_total sleep_rem sleep_cycle
