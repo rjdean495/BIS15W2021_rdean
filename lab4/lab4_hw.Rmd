@@ -77,11 +77,9 @@ table(homerange$trophic.guild)
 **7. Make two new data frames, one which is restricted to carnivores and another that is restricted to herbivores.**  
 ```{r}
 carnivore <- data.frame(filter(homerange, trophic.guild=="carnivore"))
-carnivore
 ```
 ```{r}
 herbivore <- data.frame(filter(homerange, trophic.guild=="herbivore"))
-herbivore
 ```
 **8. Do herbivores or carnivores have, on average, a larger `mean.hra.m2`? Remove any NAs from the data.**  
 ```{r}

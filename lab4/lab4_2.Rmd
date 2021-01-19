@@ -72,22 +72,22 @@ filter(fish, near(radii_length_mm, 2, tol = 0.2))
 ## Practice
 1. Filter the `fish` data to include the samples from lake "BO".
 ```{r}
-
+filter(fish, lakeid == "BO")
 ```
 
 2. Filter the data to include all lakes except "AR".
 ```{r}
-
+filter(fish, lakeid != "AR")
 ```
 
 3. Filter the fish data to include all fish with a scalelength within 0.25 of 8.
 ```{r}
-
+filter(fish, near(scalelength, 8, tol = 0.25))
 ```
 
-4. Filter the fish data to include fish with a scalelength between 2 and 4.
+4. Filter the fish data to include fish with a scalelength between 2 and 4
 ```{r}
-
+filter(fish, between(scalelength, 2, 4))
 ```
 
 ## Using `filter()` on multiple conditions
@@ -95,12 +95,14 @@ You can also use `filter()` to extract data based on multiple conditions. Below 
 ```{r}
 filter(fish, lakeid == "AL" & length > 350)
 ```
+```{r}
+filter(fish, lakeid == "BO" & length > 320)
+```
 
 Notice that the `|` operator generates a different result.
 ```{r}
 filter(fish, lakeid == "AL" | length > 350)
 ```
-
 Rules:  
 + `filter(condition1, condition2)` will return rows where both conditions are met.  
 + `filter(condition1, !condition2)` will return all rows where condition one is true but condition 2 is not.  
@@ -115,38 +117,41 @@ filter(fish, length > 400, (scalelength > 11 | radii_length_mm > 8))
 ## Practice  
 1. Have a look at the mammals data using the summary functions of your choosing.    
 ```{r}
-
+glimpse(mammals)
 ```
 
 2. What are the names of the variables in the mammals data?  
 ```{r}
-
+names(mammals)
 ```
 
 3.  From the `mammals` data, filter all members of the family Bovidae with a mass greater than 450000.
 ```{r}
-
+filter(mammals, family=="Bovidae" & mass>450000)
 ```
 
 4. Let's say we are only interested in family, genus, species, mass, and gestation. Relimit the mammals data frame to these variables.  
 ```{r}
-
+select(mammals, family:gestation)
+mammals2 <- select(mammals, family:gestation)
 ```
 
 5. Use the output from #4 to focus on the family Bovidae with a mass greater than 450000.
 ```{r}
-
+filter(mammals2, family=="Bovidae"&mass>450000)
 ```
 
 6. From the `mammals` data, build a data frame that compares `mass`, `gestation`, and `newborn` among the primate genera `Lophocebus`, `Erythrocebus`, and `Macaca`. Among these genera, which species has the smallest `newborn` mass?
 ```{r}
-
+mammal_genus<-select(mammals,genus, mass, gestation, newborn)
+primates<-filter(mammal_genus, genus %in% c("Lophocebus", "Erthrocebus", "Macaca"))
+primates
 ```
 
 ```{r}
-
+min(primates[,4])
 ```
-
+Macaca has the smallest newborn mass
 ## Wrap-up  
 
 Please review the learning goals and be sure to use the code here as a reference when completing the homework.  

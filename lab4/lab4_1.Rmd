@@ -144,10 +144,16 @@ names(mammals)
 ```{r}
 glimpse(mammals)
 ```
+```{r}
+str(mammals)
+```
 
 2. Are there any NAs? Are you sure? Try taking an average of `max. life` as a test.  
 ```{r}
 anyNA(mammals)
+```
+```{r}
+colMeans(mammals [,11])
 ```
 
 ```{r}
