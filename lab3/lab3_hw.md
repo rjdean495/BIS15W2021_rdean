@@ -1,7 +1,7 @@
 ---
 title: "Lab 3 Homework"
 author: "Richard J. Dean"
-date: "2021-01-14"
+date: "2021-01-19"
 output:
   html_document: 
     theme: spacelab
@@ -20,21 +20,38 @@ library(tidyverse)
 ```
 
 ## Mammals Sleep
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 1. For this assignment, we are going to use built-in data on mammal sleep patterns. From which publication are these data taken from? Since the data are built-in you can use the help function in R.
 
 ```r
 help()
+```
+
+```
+## starting httpd help server ... done
+```
+
+```r
 getwd()
 ```
 
 ```
-## [1] "/Users/richarddean/Desktop/BIS15W2021_rdean/lab3"
+## [1] "D:/TA files/Winter2021 BIS15L/students_rep/BIS15W2021_rdean/lab3"
 ```
 
 ```r
 data()
 ```
 This data set was taken from V. M. Savage and G. B. West. A quantitative, theoretical framework for understanding mammalian sleep. Proceedings of the National Academy of Sciences, 104 (3):1051-1056, 2007.   
+
+</div>
+
+
 2. Store these data into a new data frame `sleep`.
 
 ```r
