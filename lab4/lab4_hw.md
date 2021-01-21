@@ -1,7 +1,7 @@
 ---
 title: "Lab 4 Homework"
 author: "Richard J. Dean"
-date: "2021-01-19"
+date: "2021-01-20"
 output:
   html_document: 
     theme: spacelab
@@ -35,7 +35,7 @@ getwd()
 ```
 
 ```
-## [1] "/Users/richarddean/Desktop/BIS15W2021_rdean/lab4"
+## [1] "D:/TA files/Winter2021 BIS15L/students_rep/BIS15W2021_rdean/lab4"
 ```
 
 ```r
@@ -44,7 +44,7 @@ homerange <- readr::read_csv("data/Tamburelloetal_HomeRangeDatabase.csv")
 
 ```
 ## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_character(),
 ##   mean.mass.g = col_double(),
@@ -55,7 +55,7 @@ homerange <- readr::read_csv("data/Tamburelloetal_HomeRangeDatabase.csv")
 ##   log10.preymass = col_double(),
 ##   PPMR = col_double()
 ## )
-## ℹ Use `spec()` for the full column specifications.
+## i Use `spec()` for the full column specifications.
 ```
 
 ```r
@@ -66,17 +66,17 @@ homerange
 ## # A tibble: 569 x 24
 ##    taxon common.name class order family genus species primarymethod N    
 ##    <chr> <chr>       <chr> <chr> <chr>  <chr> <chr>   <chr>         <chr>
-##  1 lake… american e… acti… angu… angui… angu… rostra… telemetry     16   
-##  2 rive… blacktail … acti… cypr… catos… moxo… poecil… mark-recaptu… <NA> 
-##  3 rive… central st… acti… cypr… cypri… camp… anomal… mark-recaptu… 20   
-##  4 rive… rosyside d… acti… cypr… cypri… clin… fundul… mark-recaptu… 26   
-##  5 rive… longnose d… acti… cypr… cypri… rhin… catara… mark-recaptu… 17   
-##  6 rive… muskellunge acti… esoc… esoci… esox  masqui… telemetry     5    
-##  7 mari… pollack     acti… gadi… gadid… poll… pollac… telemetry     2    
-##  8 mari… saithe      acti… gadi… gadid… poll… virens  telemetry     2    
-##  9 mari… lined surg… acti… perc… acant… acan… lineat… direct obser… <NA> 
-## 10 mari… orangespin… acti… perc… acant… naso  litura… telemetry     8    
-## # … with 559 more rows, and 15 more variables: mean.mass.g <dbl>,
+##  1 lake~ american e~ acti~ angu~ angui~ angu~ rostra~ telemetry     16   
+##  2 rive~ blacktail ~ acti~ cypr~ catos~ moxo~ poecil~ mark-recaptu~ <NA> 
+##  3 rive~ central st~ acti~ cypr~ cypri~ camp~ anomal~ mark-recaptu~ 20   
+##  4 rive~ rosyside d~ acti~ cypr~ cypri~ clin~ fundul~ mark-recaptu~ 26   
+##  5 rive~ longnose d~ acti~ cypr~ cypri~ rhin~ catara~ mark-recaptu~ 17   
+##  6 rive~ muskellunge acti~ esoc~ esoci~ esox  masqui~ telemetry     5    
+##  7 mari~ pollack     acti~ gadi~ gadid~ poll~ pollac~ telemetry     2    
+##  8 mari~ saithe      acti~ gadi~ gadid~ poll~ virens  telemetry     2    
+##  9 mari~ lined surg~ acti~ perc~ acant~ acan~ lineat~ direct obser~ <NA> 
+## 10 mari~ orangespin~ acti~ perc~ acant~ naso  litura~ telemetry     8    
+## # ... with 559 more rows, and 15 more variables: mean.mass.g <dbl>,
 ## #   log10.mass <dbl>, alternative.mass.reference <chr>, mean.hra.m2 <dbl>,
 ## #   log10.hra <dbl>, hra.reference <chr>, realm <chr>, thermoregulation <chr>,
 ## #   locomotion <chr>, trophic.guild <chr>, dimension <chr>, preymass <dbl>,
@@ -117,7 +117,7 @@ str(homerange)
 ```
 
 ```
-## tibble [569 × 24] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+## tibble [569 x 24] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ taxon                     : chr [1:569] "lake fishes" "river fishes" "river fishes" "river fishes" ...
 ##  $ common.name               : chr [1:569] "american eel" "blacktail redhorse" "central stoneroller" "rosyside dace" ...
 ##  $ class                     : chr [1:569] "actinopterygii" "actinopterygii" "actinopterygii" "actinopterygii" ...
@@ -132,7 +132,7 @@ str(homerange)
 ##  $ alternative.mass.reference: chr [1:569] NA NA NA NA ...
 ##  $ mean.hra.m2               : num [1:569] 282750 282.1 116.1 125.5 87.1 ...
 ##  $ log10.hra                 : num [1:569] 5.45 2.45 2.06 2.1 1.94 ...
-##  $ hra.reference             : chr [1:569] "Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52 "Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52 "Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52 "Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52 ...
+##  $ hra.reference             : chr [1:569] "Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aqu"| __truncated__ "Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aqu"| __truncated__ "Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aqu"| __truncated__ "Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aqu"| __truncated__ ...
 ##  $ realm                     : chr [1:569] "aquatic" "aquatic" "aquatic" "aquatic" ...
 ##  $ thermoregulation          : chr [1:569] "ectotherm" "ectotherm" "ectotherm" "ectotherm" ...
 ##  $ locomotion                : chr [1:569] "swimming" "swimming" "swimming" "swimming" ...
@@ -268,7 +268,7 @@ levels(homerange$order)
 ## [40] "rodentia"           "salmoniformes"      "scorpaeniformes"   
 ## [43] "siluriformes"       "soricomorpha"       "squamata"          
 ## [46] "strigiformes"       "struthioniformes"   "syngnathiformes"   
-## [49] "testudines"         "tetraodontiformes\xa0" "tinamiformes"
+## [49] "testudines"         "tetraodontiformes<U+00A0>" "tinamiformes"
 ```
 
 **4. What taxa are represented in the `homerange` data frame? Make a new data frame `taxa` that is restricted to taxon, common name, class, order, family, genus, species.**  
@@ -284,17 +284,17 @@ taxa
 ## # A tibble: 569 x 6
 ##    taxon       common.name          class       order       family     genus    
 ##    <fct>       <chr>                <chr>       <fct>       <chr>      <chr>    
-##  1 lake fishes american eel         actinopter… anguillifo… anguillid… anguilla 
-##  2 river fish… blacktail redhorse   actinopter… cyprinifor… catostomi… moxostoma
-##  3 river fish… central stoneroller  actinopter… cyprinifor… cyprinidae camposto…
-##  4 river fish… rosyside dace        actinopter… cyprinifor… cyprinidae clinosto…
-##  5 river fish… longnose dace        actinopter… cyprinifor… cyprinidae rhinicht…
-##  6 river fish… muskellunge          actinopter… esociformes esocidae   esox     
-##  7 marine fis… pollack              actinopter… gadiformes  gadidae    pollachi…
-##  8 marine fis… saithe               actinopter… gadiformes  gadidae    pollachi…
-##  9 marine fis… lined surgeonfish    actinopter… perciformes acanthuri… acanthur…
-## 10 marine fis… orangespine unicorn… actinopter… perciformes acanthuri… naso     
-## # … with 559 more rows
+##  1 lake fishes american eel         actinopter~ anguillifo~ anguillid~ anguilla 
+##  2 river fish~ blacktail redhorse   actinopter~ cyprinifor~ catostomi~ moxostoma
+##  3 river fish~ central stoneroller  actinopter~ cyprinifor~ cyprinidae camposto~
+##  4 river fish~ rosyside dace        actinopter~ cyprinifor~ cyprinidae clinosto~
+##  5 river fish~ longnose dace        actinopter~ cyprinifor~ cyprinidae rhinicht~
+##  6 river fish~ muskellunge          actinopter~ esociformes esocidae   esox     
+##  7 marine fis~ pollack              actinopter~ gadiformes  gadidae    pollachi~
+##  8 marine fis~ saithe               actinopter~ gadiformes  gadidae    pollachi~
+##  9 marine fis~ lined surgeonfish    actinopter~ perciformes acanthuri~ acanthur~
+## 10 marine fis~ orangespine unicorn~ actinopter~ perciformes acanthuri~ naso     
+## # ... with 559 more rows
 ```
 **5. The variable `taxon` identifies the large, common name groups of the species represented in `homerange`. Make a table the shows the counts for each of these `taxon`.**  
 
@@ -384,8 +384,8 @@ filter(homerange, genus=="alces")
 ## # A tibble: 1 x 24
 ##   taxon common.name class order family genus species primarymethod N    
 ##   <fct> <chr>       <chr> <fct> <chr>  <chr> <chr>   <chr>         <chr>
-## 1 mamm… moose       mamm… arti… cervi… alces alces   telemetry*    <NA> 
-## # … with 15 more variables: mean.mass.g <dbl>, log10.mass <dbl>,
+## 1 mamm~ moose       mamm~ arti~ cervi~ alces alces   telemetry*    <NA> 
+## # ... with 15 more variables: mean.mass.g <dbl>, log10.mass <dbl>,
 ## #   alternative.mass.reference <chr>, mean.hra.m2 <dbl>, log10.hra <dbl>,
 ## #   hra.reference <chr>, realm <chr>, thermoregulation <chr>, locomotion <chr>,
 ## #   trophic.guild <chr>, dimension <chr>, preymass <dbl>, log10.preymass <dbl>,
@@ -415,8 +415,8 @@ filter(snakes, mean.hra.m2==200)
 ## # A tibble: 1 x 24
 ##   taxon common.name class order family genus species primarymethod N    
 ##   <fct> <chr>       <chr> <fct> <chr>  <chr> <chr>   <chr>         <chr>
-## 1 snak… namaqua dw… rept… squa… viper… bitis schnei… telemetry     11   
-## # … with 15 more variables: mean.mass.g <dbl>, log10.mass <dbl>,
+## 1 snak~ namaqua dw~ rept~ squa~ viper~ bitis schnei~ telemetry     11   
+## # ... with 15 more variables: mean.mass.g <dbl>, log10.mass <dbl>,
 ## #   alternative.mass.reference <chr>, mean.hra.m2 <dbl>, log10.hra <dbl>,
 ## #   hra.reference <chr>, realm <chr>, thermoregulation <chr>, locomotion <chr>,
 ## #   trophic.guild <chr>, dimension <chr>, preymass <dbl>, log10.preymass <dbl>,
