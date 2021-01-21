@@ -112,21 +112,18 @@ bad %>%
 
 9. OK, so are there more good guys or bad guys that are bald (personal interest)?
 ```{r}
-good %>% 
-  filter(hair.color=="No Hair") %>% 
-  select(name,hair.color)
+tabyl(good, hair.color)
 ```
 ```{r}
-bad %>% 
-  filter(hair.color=="No Hair") %>% 
-  select(name,hair.color)
+tabyl(bad, hair.color)
 ```
 There are more good guys who are bald
 10. Let's explore who the really "big" superheros are. In the `superhero_info` data, which have a height over 200 or weight over 300?
 ```{r}
 superhero_info %>% 
   filter(height>300 | weight>450) %>% 
-  select(name, height, weight)
+  select(name, height, weight) %>% 
+  arrange(desc(weight))
 ```
 
 11. Just to be clear on the `|` operator,  have a look at the superheros over 300 in height...
@@ -140,20 +137,20 @@ superhero_info %>%
 superhero_info %>% 
   filter(weight>450)
 ```
-
+There are multiple heros (2) that fit both conditions of having a height of over 300 and a weight of over 450. The "|" operator returns data that satisfies either condition
 ## Height to Weight Ratio
 13. It's easy to be strong when you are heavy and tall, but who is heavy and short? Which superheros have the highest height to weight ratio?
 ```{r}
 superhero_info %>% 
-  mutate(HWR=height/weight) %>% 
-  select(name, height, weight, HWR) %>% 
-  arrange(HWR)
+  mutate(hwr=height/weight) %>% 
+  select(name, height, weight, hwr) %>% 
+  arrange(hwr)
 ```
 
 ## `superhero_powers`
 Have a quick look at the `superhero_powers` data frame.  
 ```{r}
-head(superhero_powers)
+glimpse(superhero_powers)
 ```
 
 14. How many superheros have a combination of accelerated healing, durability, and super strength?
@@ -167,7 +164,8 @@ superhero_powers %>%
 15. We are only interested in the superheros that do some kind of "kinesis". How would we isolate them from the `superhero_powers` data?
 ```{r}
 superhero_powers %>% 
-  select(hero_names,contains("kinesis"))
+  select(hero_names,contains("kinesis")) %>% 
+  filter_all(any_vars(.=="TRUE"))
 ```
 
 16. Pick your favorite superhero and let's see their powers!
