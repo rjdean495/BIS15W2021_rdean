@@ -109,8 +109,8 @@ fisheries_tidy %>%
 6. Which country had the largest overall catch in the year 2000?
 ```{r}
 fisheries_tidy %>%
-  group_by(country) %>% 
   filter(year=="2000") %>% 
+  group_by(country) %>% 
   summarize(sumcatch=sum(catch,na.rm=T),
             totaln=n(),.groups= 'keep') %>% 
   arrange(desc(sumcatch))
@@ -128,12 +128,12 @@ Morocco caught the most sardines between 1990 to 2000
 8. Which five countries caught the most cephalopods between 2008-2012?
 ```{r}
 fisheries_tidy %>% 
-  filter(year>=2008,year<=2012, asfis_species_name=="Sepia officinalis") %>% 
+  filter(year>=2008,year<=2012, asfis_species_name=="Cephalopoda") %>% 
   group_by(country) %>% 
   summarize(sumcatch=sum(catch,na.rm=T),.groups= 'keep') %>% 
   arrange(desc(sumcatch))
 ```
-France, Portugal, Albania, Croatia and Cyprus
+India, China, Spain, Algeria and France
 9. Which species had the highest catch total between 2008-2012? (hint: Osteichthyes is not a species)
 ```{r}
 fisheries_tidy %>%

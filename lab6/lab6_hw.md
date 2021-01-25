@@ -549,8 +549,8 @@ fisheries_tidy %>%
 
 ```r
 fisheries_tidy %>%
-  group_by(country) %>% 
   filter(year=="2000") %>% 
+  group_by(country) %>% 
   summarize(sumcatch=sum(catch,na.rm=T),
             totaln=n(),.groups= 'keep') %>% 
   arrange(desc(sumcatch))
@@ -606,36 +606,35 @@ Morocco caught the most sardines between 1990 to 2000
 
 ```r
 fisheries_tidy %>% 
-  filter(year>=2008,year<=2012, asfis_species_name=="Sepia officinalis") %>% 
+  filter(year>=2008,year<=2012, asfis_species_name=="Cephalopoda") %>% 
   group_by(country) %>% 
   summarize(sumcatch=sum(catch,na.rm=T),.groups= 'keep') %>% 
   arrange(desc(sumcatch))
 ```
 
 ```
-## # A tibble: 17 x 2
-## # Groups:   country [17]
-##    country         sumcatch
-##    <fct>              <dbl>
-##  1 France               419
-##  2 Portugal             296
-##  3 Albania              250
-##  4 Croatia              192
-##  5 Cyprus               173
-##  6 Greece               159
-##  7 Malta                124
-##  8 Israel                62
-##  9 Slovenia              56
-## 10 Turkey                26
-## 11 Channel Islands       20
-## 12 Tunisia               17
-## 13 Spain                 15
-## 14 Algeria                0
-## 15 Belgium                0
-## 16 Libya                  0
-## 17 Netherlands            0
+## # A tibble: 16 x 2
+## # Groups:   country [16]
+##    country                  sumcatch
+##    <fct>                       <dbl>
+##  1 India                         570
+##  2 China                         257
+##  3 Spain                         198
+##  4 Algeria                       162
+##  5 France                        101
+##  6 Mauritania                     90
+##  7 TimorLeste                     76
+##  8 Italy                          66
+##  9 Mozambique                     16
+## 10 Cambodia                       15
+## 11 Taiwan Province of China       13
+## 12 Madagascar                     11
+## 13 Croatia                         7
+## 14 Israel                          0
+## 15 Somalia                         0
+## 16 Viet Nam                        0
 ```
-France, Portugal, Albania, Croatia and Cyprus
+India, China, Spain, Algeria and France
 9. Which species had the highest catch total between 2008-2012? (hint: Osteichthyes is not a species)
 
 ```r
