@@ -1,7 +1,7 @@
 ---
 title: "Lab 6 Homework"
 author: "Richard J. Dean"
-date: "2021-01-24"
+date: "2021-01-26"
 output:
   html_document: 
     theme: spacelab
@@ -33,13 +33,13 @@ fisheries<-readr::read_csv("data/FAO_1950to2012_111914.csv")
 
 ```
 ## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_character(),
 ##   `ISSCAAP group#` = col_double(),
 ##   `FAO major fishing area` = col_double()
 ## )
-## ℹ Use `spec()` for the full column specifications.
+## i Use `spec()` for the full column specifications.
 ```
 
 1. Do an exploratory analysis of the data (your choice). What are the names of the variables, what are the dimensions, are there any NA's, what are the classes of the variables?  
@@ -454,19 +454,19 @@ fisheries_tidy
 
 ```
 ## # A tibble: 376,771 x 10
-##    country common_name isscaap_group_n… isscaap_taxonom… asfis_species_n…
+##    country common_name isscaap_group_n~ isscaap_taxonom~ asfis_species_n~
 ##    <fct>   <chr>       <fct>            <chr>            <fct>           
-##  1 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  2 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  3 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  4 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  5 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  6 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  7 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  8 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-##  9 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-## 10 Albania Angelshark… 38               Sharks, rays, c… 10903XXXXX      
-## # … with 376,761 more rows, and 5 more variables: asfis_species_name <chr>,
+##  1 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  2 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  3 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  4 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  5 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  6 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  7 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  8 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+##  9 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+## 10 Albania Angelshark~ 38               Sharks, rays, c~ 10903XXXXX      
+## # ... with 376,761 more rows, and 5 more variables: asfis_species_name <chr>,
 ## #   fao_major_fishing_area <fct>, measure <chr>, year <dbl>, catch <dbl>
 ```
 
@@ -504,7 +504,7 @@ fisheries_tidy %>%
 ##  8 Indonesia                 9274
 ##  9 Australia                 8183
 ## 10 Un. Sov. Soc. Rep.        7084
-## # … with 193 more rows
+## # ... with 193 more rows
 ```
 203 countries
 4. Refocus the data only to include only: country, isscaap_taxonomic_group, asfis_species_name, asfis_species_number, year, catch.
@@ -516,19 +516,19 @@ fisheries_tidy %>%
 
 ```
 ## # A tibble: 376,771 x 6
-##    country isscaap_taxonomic_g… asfis_species_na… asfis_species_num…  year catch
+##    country isscaap_taxonomic_g~ asfis_species_na~ asfis_species_num~  year catch
 ##    <fct>   <chr>                <chr>             <fct>              <dbl> <dbl>
-##  1 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1995    NA
-##  2 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1996    53
-##  3 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1997    20
-##  4 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1998    31
-##  5 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          1999    30
-##  6 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2000    30
-##  7 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2001    16
-##  8 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2002    79
-##  9 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2003     1
-## 10 Albania Sharks, rays, chima… Squatinidae       10903XXXXX          2004     4
-## # … with 376,761 more rows
+##  1 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1995    NA
+##  2 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1996    53
+##  3 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1997    20
+##  4 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1998    31
+##  5 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          1999    30
+##  6 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2000    30
+##  7 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2001    16
+##  8 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2002    79
+##  9 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2003     1
+## 10 Albania Sharks, rays, chima~ Squatinidae       10903XXXXX          2004     4
+## # ... with 376,761 more rows
 ```
 
 5. Based on the asfis_species_number, how many distinct fish species were caught as part of these data?
@@ -571,7 +571,7 @@ fisheries_tidy %>%
 ##  8 India                        6351     98
 ##  9 Thailand                     6243    127
 ## 10 Korea, Republic of           6124    265
-## # … with 183 more rows
+## # ... with 183 more rows
 ```
 China had the largest overall catch in 2000
 7. Which country caught the most sardines (_Sardina pilchardus_) between the years 1990-2000?
@@ -599,9 +599,15 @@ fisheries_tidy %>%
 ##  8 Italy                      507
 ##  9 Serbia and Montenegro      478
 ## 10 Denmark                    477
-## # … with 27 more rows
+## # ... with 27 more rows
 ```
 Morocco caught the most sardines between 1990 to 2000
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 8. Which five countries caught the most cephalopods between 2008-2012?
 
 ```r
@@ -635,6 +641,9 @@ fisheries_tidy %>%
 ## 16 Viet Nam                        0
 ```
 India, China, Spain, Algeria and France
+
+</div>
+
 9. Which species had the highest catch total between 2008-2012? (hint: Osteichthyes is not a species)
 
 ```r
@@ -660,7 +669,7 @@ fisheries_tidy %>%
 ##  8 Scomber japonicus                   14723
 ##  9 Gadus morhua                        13253
 ## 10 Thunnus alalunga                    12019
-## # … with 1,462 more rows
+## # ... with 1,462 more rows
 ```
 Theragra chalcogramma had the highest catch total between 2008 to 2012
 10. Use the data to do at least one analysis of your choice.
