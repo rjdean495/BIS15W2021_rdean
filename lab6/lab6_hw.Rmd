@@ -126,11 +126,6 @@ fisheries_tidy %>%
 ```
 Morocco caught the most sardines between 1990 to 2000
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-
 8. Which five countries caught the most cephalopods between 2008-2012?
 ```{r}
 fisheries_tidy %>% 
@@ -141,7 +136,6 @@ fisheries_tidy %>%
 ```
 India, China, Spain, Algeria and France
 
-</div>
 
 9. Which species had the highest catch total between 2008-2012? (hint: Osteichthyes is not a species)
 ```{r}
