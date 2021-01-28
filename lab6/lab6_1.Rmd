@@ -88,7 +88,7 @@ names(msleep)
 ```
 ```{r}
 msleep %>% 
-  tabyl(order,vore) %>% 
+  tabyl(order,vore) %>%
   na.omit(.)
 ```
 
@@ -180,7 +180,7 @@ msleep %>%
 ```{r}
 msleep %>% 
   group_by(order) %>% 
-  summarize(mean.brainwt=mean(brainwt))
+  summarize(mean.brainwt=mean(brainwt,na.rm=T),.groups= 'keep')
 ```
 
 2. What does `NA` mean? How are NA's being treated by the summarize function?

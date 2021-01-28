@@ -1,0 +1,130 @@
+---
+title: "Midterm 1"
+author: "Richard J. Dean"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: spacelab
+    toc: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your code should be organized, clean, and run free from errors. Be sure to **add your name** to the author header above. You may use any resources to answer these questions (including each other), but you may not post questions to Open Stacks or external help sites. There are 12 total questions.  
+
+Make sure to use the formatting conventions of RMarkdown to make your report neat and clean!  
+
+This exam is due by **12:00p on Thursday, January 28**.  
+
+## Load the tidyverse
+If you plan to use any other libraries to complete this assignment then you should load them here.
+```{r message=FALSE, warning=FALSE}
+library("tidyverse")
+library("janitor")
+```
+
+## Questions
+**1. (2 points) Briefly explain how R, RStudio, and GitHub work together to make work flows in data science transparent and repeatable. What is the advantage of using RMarkdown in this context?**  
+R is an open source, scripting language. RStudio is a GUI that is used to interact with R to make it more user friendly. R is necessary for Rstudio to work. Github is a file storage and management site used by programmers. Programmers from around the world upload code to repositories and make it publicly available for everyone to see and/or download and manipulate themselves. This allows people to transparently see the steps someone took to manipulate data to get the results they observed so that others can follow it and repeat their process/verify the correctness of their results. The advantage of using RMarkdown is that it allows us to embed code in annotated chunks that are easy to read for other programmers, show the results of analyses, and display graphical output all in one easy to read file. It is a very convenient way of making a report which can be output to html or pdf to be pushed to Github for everyone to see.
+
+**2. (2 points) What are the three types of `data structures` that we have discussed? Why are we using data frames for BIS 15L?**
+Vectors, Data Matrices and Data frames. We are using data frames because one can store data from many different classes within a data frame, and they're the most common way to organize data within R. 
+
+In the midterm 1 folder there is a second folder called `data`. Inside the `data` folder, there is a .csv file called `ElephantsMF`. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
+
+**3. (2 points) Please load these data as a new object called `elephants`. Use the function(s) of your choice to get an idea of the structure of the data. Be sure to show the class of each variable.**
+```{r}
+elephants<-readr::read_csv("data/ElephantsMF.csv")
+```
+
+**4. (2 points) Change the names of the variables to lower case and change the class of the variable `sex` to a factor.**
+```{r}
+elephants<-rename(elephants, age="Age", height="Height", sex="Sex")
+```
+```{r}
+elephants$sex <- as.factor(elephants$sex)
+```
+**5. (2 points) How many male and female elephants are represented in the data?**
+```{r}
+count(elephants,sex,sort=T)
+```
+150 females ad 138 males
+**6. (2 points) What is the average age all elephants in the data?**
+```{r}
+elephants %>% 
+  summarize(mean.age=mean(age),.groups='keep')
+```
+**7. (2 points) How does the average age and height of elephants compare by sex?**
+```{r}
+elephants %>% 
+  group_by(sex) %>% 
+  summarize(mean.age=mean(age),
+            mean.height=mean(height), .groups='keep')
+```
+males are shorter and younger on average than females.
+**8. (2 points) How does the average height of elephants compare by sex for individuals over 25 years old. Include the min and max height as well as the number of individuals in the sample as part of your analysis.**
+```{r}
+elephants %>% 
+  filter(age>25) %>% 
+  group_by(sex) %>% 
+  summarize(mean.height=mean(height),
+            min.height=min(height),
+            max.height=max(height),
+            n=n(), .groups='keep')
+```
+
+For the next series of questions, we will use data from a study on vertebrate community composition and impacts from defaunation in [Gabon, Africa](https://en.wikipedia.org/wiki/Gabon). One thing to notice is that the data include 24 separate transects. Each transect represents a path through different forest management areas.  
+
+Reference: Koerner SE, Poulsen JR, Blanchard EJ, Okouyi J, Clark CJ. Vertebrate community composition and diversity declines along a defaunation gradient radiating from rural villages in Gabon. _Journal of Applied Ecology_. 2016. This paper, along with a description of the variables is included inside the midterm 1 folder.  
+
+**9. (2 points) Load `IvindoData_DryadVersion.csv` and use the function(s) of your choice to get an idea of the overall structure. Change the variables `HuntCat` and `LandUse` to factors.**
+```{r}
+cats<-readr::read_csv("data/IvindoData_DryadVersion.csv")
+```
+```{r}
+cats<-janitor::clean_names(cats)
+names(cats)
+summary(cats)
+```
+```{r}
+cats$hunt_cat<-as.factor(cats$hunt_cat)
+is.factor(cats$hunt_cat)
+```
+```{r}
+cats$land_use<-as.factor(cats$land_use)
+```
+**10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?**
+```{r}
+cats %>% 
+  filter(hunt_cat=="Moderate" | hunt_cat=="High") %>% 
+  group_by(hunt_cat) %>% 
+  summarize(avg.bird.diversity=mean(diversity_bird_species),
+            avg.mammal.diversity=mean(diversity_mammal_species),.groups='keep')
+```
+**11. (4 points) One of the conclusions in the study is that the relative abundance of animals drops off the closer you get to a village. Let's try to reconstruct this (without the statistics). How does the relative abundance (RA) of apes, birds, elephants, monkeys, rodents, and ungulates compare between sites that are less than 5km from a village to sites that are greater than 20km from a village? The variable `Distance` measures the distance of the transect from the nearest village. Hint: try using the `across` operator.**  
+```{r}
+close.villages<-cats %>% 
+  filter(distance<5)
+far.villages<-cats %>% 
+  filter(distance>20)
+```
+```{r}
+close.villages %>% 
+  summarize(across(starts_with("ra"),mean,na.rm=T),.groups='keep')
+```
+```{r}
+far.villages %>% 
+  summarize(across(starts_with("ra"),mean,na.rm=T),.groups='keep')
+```
+
+It appears that the diversity of apes, elephants, monkeys, and ungulate are increased at >20km distance, but birds and rodents are increased at <5km distance from a village.
+**12. (4 points) Based on your interest, do one exploratory analysis on the `gabon` data of your choice. This analysis needs to include a minimum of two functions in `dplyr.`**
+```{r}
+cats %>% 
+  filter(!land_use=="Neither") %>% 
+  group_by(land_use) %>% 
+  summarize(mean.all.div=mean(diversity_all_species), .groups='keep')
+```

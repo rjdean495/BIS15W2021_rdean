@@ -38,14 +38,14 @@ As biologists, a good question that we may ask is how do the measured variables 
 penguins %>% 
   group_by(island) %>% 
   summarize(mean_body_mass_g=mean(body_mass_g),
-            n=n())
+            n=n(), .groups= 'keep')
 ```
 
 Why do we have NA here? Do all of these penguins lack data?
 ```{r}
 penguins %>% 
   group_by(island) %>% 
-  summarize(number_NAs=sum(is.na(body_mass_g)))
+  summarize(number_NAs=sum(is.na(body_mass_g)), .groups= 'keep')
 ```
 
 Well, that won't work so let's remove the NAs and recalculate.
@@ -55,7 +55,7 @@ penguins %>%
   group_by(island) %>% 
   summarize(mean_body_mass_g=mean(body_mass_g),
             sd_body_mass_g=sd(body_mass_g),
-            n=n())
+            n=n(), .groups= 'keep')
 ```
 
 What if we are interested in the number of observations (penguins) by species and island?
@@ -78,7 +78,7 @@ Compare this with `summarize()` and `group_by()`.
 ```{r}
 penguins %>% 
   group_by(island) %>% 
-  summarize(n=n())
+  summarize(n=n(), .groups= 'keep')
 ```
 
 You can also use `count()` across multiple variables.
@@ -127,7 +127,7 @@ penguins %>%
 ```
 ```{r}
 penguins %>% 
-  count(species,sex, sort = F)
+  count(species,sex, sort = T)
 ```
 
 ## `across()`
@@ -150,14 +150,14 @@ penguins %>%
 This is very helpful for continuous variables.
 ```{r}
 penguins %>%
-  summarize(across(contains("mm"), mean, na.rm=T))
+  summarize(across(contains("mm"), mean, na.rm=T), .groups='keep')
 ```
 
 `group_by` also works.
 ```{r}
 penguins %>%
   group_by(sex) %>% 
-  summarize(across(contains("mm"), mean, na.rm=T))
+  summarize(across(contains("mm"), mean, na.rm=T), .groups='keep')
 ```
 Here we summarize across all variables.
 ```{r}
@@ -184,13 +184,13 @@ penguins %>%
 penguins %>% 
   group_by(species) %>% 
   summarize(across(contains("mm"),mean,na.rm=T),
-            nsamples=n())
+            nsamples=n(),.groups= 'keep')
 ```
 ```{r}
 penguins %>% 
   group_by(species) %>% 
   summarize(across(contains("mm"), sd, na.rm=T),
-            nsamples=n())
+            nsamples=n(),.groups= 'keep')
 ```
 ## Wrap-up  
 

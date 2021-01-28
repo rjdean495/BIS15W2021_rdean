@@ -134,6 +134,10 @@ fisheries_tidy %>%
   arrange(desc(sumcatch))
 ```
 India, China, Spain, Algeria and France
+```{r}
+summary(fisheries_tidy)
+```
+
 9. Which species had the highest catch total between 2008-2012? (hint: Osteichthyes is not a species)
 ```{r}
 fisheries_tidy %>%

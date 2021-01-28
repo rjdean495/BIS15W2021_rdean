@@ -207,6 +207,7 @@ Here are two examples of code that are super helpful to have in your bag of tric
 Imported data frames often have a mix of lower and uppercase column names. Use `toupper()` or `tolower()` to fix this issue. I always try to use lowercase to keep things consistent.  
 ```{r}
 mammals <- select_all(mammals, tolower)
+mammals
 ```
 
 ```{r}
