@@ -1,7 +1,7 @@
 ---
 title: "Lab 6 Homework"
 author: "Richard J. Dean"
-date: "2021-01-24"
+date: "2021-01-27"
 output:
   html_document: 
     theme: spacelab
@@ -602,6 +602,7 @@ fisheries_tidy %>%
 ## # … with 27 more rows
 ```
 Morocco caught the most sardines between 1990 to 2000
+
 8. Which five countries caught the most cephalopods between 2008-2012?
 
 ```r
@@ -635,6 +636,39 @@ fisheries_tidy %>%
 ## 16 Viet Nam                        0
 ```
 India, China, Spain, Algeria and France
+<<<<<<< HEAD
+
+```r
+summary(fisheries_tidy)
+```
+
+```
+##                      country       common_name        isscaap_group_number
+##  United States of America: 18080   Length:376771      33     : 69821      
+##  Spain                   : 17482   Class :character   36     : 61839      
+##  Japan                   : 15429   Mode  :character   37     : 38992      
+##  Portugal                : 11570                      34     : 27360      
+##  Korea, Republic of      : 10824                      38     : 23210      
+##  France                  : 10639                      32     : 21616      
+##  (Other)                 :292747                      (Other):133933      
+##  isscaap_taxonomic_group    asfis_species_number asfis_species_name
+##  Length:376771           199XXXXXXX010: 14289    Length:376771     
+##  Class :character        1750102610   :  6866    Class :character  
+##  Mode  :character        199XXXXXXX054:  6405    Mode  :character  
+##                          1750102501   :  5785                      
+##                          1750102612   :  5341                      
+##                          1750400301   :  5143                      
+##                          (Other)      :332942                      
+##  fao_major_fishing_area   measure               year          catch         
+##  27     : 58309         Length:376771      Min.   :1950   Min.   :    0.00  
+##  34     : 47080         Class :character   1st Qu.:1977   1st Qu.:    2.00  
+##  37     : 40698         Mode  :character   Median :1991   Median :    7.00  
+##  51     : 33244                            Mean   :1989   Mean   :   39.36  
+##  31     : 30530                            3rd Qu.:2003   3rd Qu.:   32.00  
+##  71     : 30065                            Max.   :2012   Max.   :77000.00  
+##  (Other):136845                                           NA's   :133583
+```
+
 9. Which species had the highest catch total between 2008-2012? (hint: Osteichthyes is not a species)
 
 ```r

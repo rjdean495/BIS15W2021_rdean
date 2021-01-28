@@ -125,6 +125,7 @@ fisheries_tidy %>%
   arrange(desc(catchsum))
 ```
 Morocco caught the most sardines between 1990 to 2000
+
 8. Which five countries caught the most cephalopods between 2008-2012?
 ```{r}
 fisheries_tidy %>% 
@@ -134,6 +135,7 @@ fisheries_tidy %>%
   arrange(desc(sumcatch))
 ```
 India, China, Spain, Algeria and France
+<<<<<<< HEAD
 ```{r}
 summary(fisheries_tidy)
 ```

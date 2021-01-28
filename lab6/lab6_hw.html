@@ -11,7 +11,7 @@
 
 <meta name="author" content="Richard J. Dean" />
 
-<meta name="date" content="2021-01-24" />
+<meta name="date" content="2021-01-27" />
 
 <title>Lab 6 Homework</title>
 
@@ -399,7 +399,7 @@ summary {
 
 <h1 class="title toc-ignore">Lab 6 Homework</h1>
 <h4 class="author">Richard J. Dean</h4>
-<h4 class="date">2021-01-24</h4>
+<h4 class="date">2021-01-27</h4>
 
 </div>
 
@@ -1593,7 +1593,10 @@ fisheries_tidy</code></pre>
 ##  9 Serbia and Montenegro      478
 ## 10 Denmark                    477
 ## # … with 27 more rows</code></pre>
-<p>Morocco caught the most sardines between 1990 to 2000 8. Which five countries caught the most cephalopods between 2008-2012?</p>
+<p>Morocco caught the most sardines between 1990 to 2000</p>
+<ol start="8" style="list-style-type: decimal">
+<li>Which five countries caught the most cephalopods between 2008-2012?</li>
+</ol>
 <pre class="r"><code>fisheries_tidy %&gt;% 
   filter(year&gt;=2008,year&lt;=2012, asfis_species_name==&quot;Cephalopoda&quot;) %&gt;% 
   group_by(country) %&gt;% 
@@ -1619,7 +1622,35 @@ fisheries_tidy</code></pre>
 ## 14 Israel                          0
 ## 15 Somalia                         0
 ## 16 Viet Nam                        0</code></pre>
-<p>India, China, Spain, Algeria and France 9. Which species had the highest catch total between 2008-2012? (hint: Osteichthyes is not a species)</p>
+<p>India, China, Spain, Algeria and France &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<pre class="r"><code>summary(fisheries_tidy)</code></pre>
+<pre><code>##                      country       common_name        isscaap_group_number
+##  United States of America: 18080   Length:376771      33     : 69821      
+##  Spain                   : 17482   Class :character   36     : 61839      
+##  Japan                   : 15429   Mode  :character   37     : 38992      
+##  Portugal                : 11570                      34     : 27360      
+##  Korea, Republic of      : 10824                      38     : 23210      
+##  France                  : 10639                      32     : 21616      
+##  (Other)                 :292747                      (Other):133933      
+##  isscaap_taxonomic_group    asfis_species_number asfis_species_name
+##  Length:376771           199XXXXXXX010: 14289    Length:376771     
+##  Class :character        1750102610   :  6866    Class :character  
+##  Mode  :character        199XXXXXXX054:  6405    Mode  :character  
+##                          1750102501   :  5785                      
+##                          1750102612   :  5341                      
+##                          1750400301   :  5143                      
+##                          (Other)      :332942                      
+##  fao_major_fishing_area   measure               year          catch         
+##  27     : 58309         Length:376771      Min.   :1950   Min.   :    0.00  
+##  34     : 47080         Class :character   1st Qu.:1977   1st Qu.:    2.00  
+##  37     : 40698         Mode  :character   Median :1991   Median :    7.00  
+##  51     : 33244                            Mean   :1989   Mean   :   39.36  
+##  31     : 30530                            3rd Qu.:2003   3rd Qu.:   32.00  
+##  71     : 30065                            Max.   :2012   Max.   :77000.00  
+##  (Other):136845                                           NA&#39;s   :133583</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>Which species had the highest catch total between 2008-2012? (hint: Osteichthyes is not a species)</li>
+</ol>
 <pre class="r"><code>fisheries_tidy %&gt;%
   filter(year&gt;=2008, year&lt;=2012) %&gt;%
   group_by(asfis_species_name) %&gt;%
