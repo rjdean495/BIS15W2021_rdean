@@ -19,8 +19,8 @@ output:
 ## Install the packages `naniar` and `visdat`
 We will use these in part 2 of today's lab.
 ```{r}
-#install.packages("naniar")
-#install.packages("visdat")
+install.packages("naniar")
+install.packages("visdat")
 ```
 
 ## Load the libraries
@@ -140,7 +140,7 @@ hist(amniota$egg_mass_g)
 
 4. Given that we know that the output of #2 is wrong, what do you think is the best approach for dealing with NA's in the `amniote` data?  
 
-
+Replace any value input = -999 with NA.
 ## Replacing values with NA
 If you are certain that NA's are represented by a specific value in the data, the best way to deal with them is to replace the value with NA. This is similar to a find & replace function in excel. Although you can do this when you import the data, in most cases you will need to (and should!) do some exploration first.  
 
@@ -188,7 +188,6 @@ msleep %>%
   mutate(conservation_modified = na_if(conservation, "domesticated"))%>% 
   count(conservation_modified, sort = T) #previously there were only 29 NA's
 ```
-
 ## Practice
 For the following examples, we will use the `life_history` data for mammals. The [data](http://esapubs.org/archive/ecol/E084/093/) are from:  
 **S. K. Morgan Ernest. 2003. Life history characteristics of placental non-volant mammals. Ecology 84:3402.**  
@@ -197,8 +196,9 @@ For the following examples, we will use the `life_history` data for mammals. The
 ```{r}
 life_history <- readr::read_csv("data/mammal_lifehistories_v2.csv")
 ```
-
-
+```{r}
+summary(life_history)
+```
 2. Explore the data using any method that you prefer. `skimr` provides a nice output with histograms for numeric variables.  
 ```{r}
 life_history %>% 
@@ -221,8 +221,6 @@ life_history_tidy %>%
 life_history_tidy %>% 
   summarize(number_nas=sum(is.na(life_history_tidy)))
 ```
-
-
 4. In which variable are the most NAs in the data frame?
 ```{r}
 life_history_tidy %>% 
@@ -232,8 +230,6 @@ life_history_tidy %>%
     values_to = "num_nas") %>% 
   arrange(desc(num_nas))
 ```
-
-
 ## That's it! Take a break and I will see you on Zoom!  
 
 -->[Home](https://jmledford3115.github.io/datascibiol/)
