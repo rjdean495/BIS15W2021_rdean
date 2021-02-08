@@ -65,6 +65,7 @@ Yes, this data is "tidy" each variable has its own column and each obseration ha
 ```{r}
 sydneybeaches_long<-sydneybeaches %>% 
   select(site, date, enterococci_cfu_100ml)
+sydneybeaches_long
 ```
 4. Pivot the data such that the dates are column names and each beach only appears once. Name the object `sydneybeaches_wide`
 ```{r}
