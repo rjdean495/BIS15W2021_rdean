@@ -106,7 +106,7 @@ avg_dmy_sydneybeacheslong
 8. Make the output from question 7 easier to read by pivoting it to wide format.
 ```{r}
 easier_avg_dmy_sydneybeacheslong<-avg_dmy_sydneybeacheslong %>% 
-  pivot_wider(names_from="year",
+  pivot_wider(names_from="site",
               values_from="mean_cfu")
 ```
 ```{r}
@@ -115,9 +115,7 @@ easier_avg_dmy_sydneybeacheslong
 9. What was the most polluted beach in 2018?
 ```{r}
 easier_avg_dmy_sydneybeacheslong %>% 
-  select(site,"2018") %>% 
-  rename(yr2018="2018") %>% 
-  arrange(desc("yr2018"))
+  filter(year=="2018")
 ```
 South Maroubra Rockpool was the most polluted beach in 2018
 10. Please complete the class project survey at: [BIS 15L Group Project](https://forms.gle/H2j69Z3ZtbLH3efW6)
