@@ -128,6 +128,10 @@ univ_calif_final<-univ_calif_final %>%
   separate(instnm, into= c("univ", "campus"), sep = "-")
 univ_calif_final
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 9. The column `ADM_RATE` is the admissions rate by campus. Which UC has the lowest and highest admissions rates? Produce a numerical summary and an appropriate plot.
 ```{r}
@@ -136,6 +140,8 @@ univ_calif_final %>%
   geom_col()
 ```
 Berkely has the lowest rates of admission (elitists, smh).
+</div>
+
 10. If you wanted to get a degree in biological or biomedical sciences, which campus confers the majority of these degrees? Produce a numerical summary and an appropriate plot.
 ```{r}
 univ_calif_final %>% 
