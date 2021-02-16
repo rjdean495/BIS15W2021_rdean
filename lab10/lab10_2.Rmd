@@ -64,18 +64,16 @@ Play with point size.
 ```{r}
 p +geom_point(size=1)
 ```
-
 Map shapes to another categorical variable.
 ```{r}
 p+geom_point(aes(shape=thermoregulation, color=thermoregulation), size=1.75)
 ```
-
 ## Barplots and multiple variables
 At this point you should be comfortable building bar plots that shows counts of observations using `geom_bar()`. Last time we explored the `fill` option in box plots as a way to bring color to the plot; i.e. we filled by the same variable that we were plotting. What happens when we fill by a different categorical variable?  
 
 Let's start by counting how many observations we have in each taxonomic group.
 ```{r}
-homerange %>% count(taxon)
+homerange %>% count(taxon,sort=T)
 ```
 
 Now let's make a bar plot of these data.
@@ -106,7 +104,6 @@ homerange %>%
        x = "Taxonomic Group",
        fill = "Trophic Guild")
 ```
-
 Here is the same plot oriented vertically.
 ```{r}
 homerange %>% 
@@ -132,16 +129,19 @@ For this practice, let's use the [palmerpenguins](https://allisonhorst.github.io
 
 1. Make a bar plot that shows counts of individuals by island. Fill by species, and try both a stacked bar plot and `position="dodge"`.
 ```{r}
-
+penguins<-readr::read_csv("data/penguins.csv")
 ```
 
 ```{r}
-
+pengins %>% 
+  ggplot(aes(x=island, fill=species))+ geom_bar(position="dodge")
 ```
 
 2. What are the number of individuals separated by sex on each island?
 ```{r}
-
+pengins %>% 
+  filter(sex!="NA") %>% 
+  ggplot(aes(x=island, fill=sex))+ geom_bar(position="dodge")
 ```
 
 ## Using `group`
@@ -150,7 +150,7 @@ In addition to `fill`, `group` is an aesthetic that accomplishes the same functi
 Here is a box plot that shows `log10.mass` by taxonomic `class.`
 ```{r}
 homerange %>% 
-  ggplot(aes(x = class, y = log10.mass)) +
+  ggplot(aes(x = class, y = log10.mass, fill=class)) +
   geom_boxplot()
 ```
 
@@ -164,7 +164,7 @@ homerange %>%
 I can also use `fill` to associate the different taxa with a color coded key.
 ```{r}
 homerange %>% 
-  ggplot(aes(x = class, y = log10.mass, fill = taxon)) +
+  ggplot(aes(x = class, y = log10.mass, fill = taxon)) + #or color() in place of fill()
   geom_boxplot()
 ```
 
