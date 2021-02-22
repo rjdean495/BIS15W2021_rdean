@@ -33,6 +33,9 @@ Please make sure that you have 1-2 data sets to share with your group member dur
 #install.packages("RColorBrewer")
 #install.packages("paletteer")
 ```
+```{r}
+#install.packages("ggthemes")
+```
 
 ## Load the libraries
 ```{r message=FALSE, warning=FALSE}
@@ -124,23 +127,33 @@ homerange %>%
 ## Practice
 1. Make a histogram of `log10.hra`. Make sure to add a title.
 ```{r}
-
+homerange %>% 
+  ggplot(aes(x=log10.hra))+
+  geom_histogram(alpha = 0.6, color = "black", fill = "deeppink4", bins=40)+
+  labs(title = "Distribution of Home Range")
 ```
 
 2. Now plot the same variable using `geom_density()`.
 ```{r}
-
+homerange %>% 
+  ggplot(aes(x=log10.hra))+
+  geom_density(alpha = 0.6, color = "black", fill = "deeppink4", bins=40)+
+  labs(title = "Distribution of Home Range")
 ```
 
 3. Combine them both!
 ```{r}
-
+homerange %>% 
+  ggplot(aes(x=log10.hra)) +
+  geom_histogram(aes(y = ..density..), binwidth = .4, fill = "steelblue", alpha = 0.8, color = "black")+
+  geom_density(color = "red")+
+  labs(title = "Distribution of Homerange")
 ```
 
 ## Create Categories with mutate and case_when()
 `case_when()` is a very handy function from `dplyr` which allows us to calculate a new variable from other variables. We use `case_when()` within `mutate()` to do this.`case_when()` allows us to specify multiple conditions. Let's reclassify the body mass variable into a new factor variable with small, medium, and large animals. 
 ```{r}
-#glimpse(homerange)
+glimpse(homerange)
 ```
 
 ```{r}
@@ -167,29 +180,49 @@ homerange %>%
        x = "Mass Category",
        fill = "Trophic Guild")
 ```
+```{r}
+homerange %>% 
+  ggplot(aes(x = mass_category, fill = trophic.guild)) +
+  geom_bar(position="dodge") +
+  coord_flip() +
+  labs(title = "Observations by Taxon and Mass Category in Homerange Data",
+       x = "Mass Category",
+       fill = "Trophic Guild")
+```
 
 ## Practice
 1. Use case_when() to make a new column `range_category` that breaks down `log10.hra` into very small, small, medium, and large classes based on quartile.
 ```{r}
-
+homerange<- homerange %>% 
+  mutate(range_category=case_when(log10.hra<=3.654 ~ "very small",
+                                  log10.hra>3.654 & log10.hra<=4.595 ~ "small",
+                                  log10.hra>4.595 & log10.hra<=6.016 ~ "medium",
+                                  log10.hra>6.016 & log10.hra<=9.55 ~ "large"))
+  
 ```
 
 ```{r}
-
+summary(homerange$log10.hra)
 ```
 
 ```{r}
-
+library(gtools)
+quartiles<- quantcut(homerange$log10.hra)
 ```
 
 2. How many and which taxonomic classes are represented in each of the `range_category` classes?
 ```{r}
-
+homerange %>% 
+  ggplot(aes(x=range_category, fill=class))+
+  geom_bar(position="dodge")
 ```
 
 3. Isolate the small `range_category` and plot the range of `log10.mass` by taxonomic class.
 ```{r}
-
+homerange %>% 
+  filter(range_category=="small") %>% 
+  ggplot(aes(x=class,y=log10.mass,fill=class))+
+  geom_boxplot(alpha=0.6)
 ```
 
 ## That's it! Take a break and I will see you on Zoom!  

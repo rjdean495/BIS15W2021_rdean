@@ -76,6 +76,7 @@ t_pop
 ```{r}
 tabyl(population,country)
 ```
+
 ```{r}
 population %>% 
   summarize(ncountriespop=n_distinct(population))
@@ -137,7 +138,7 @@ t_lifeexp %>%
        y="Average Life Expectancy (Years)")+
   scale_x_discrete(breaks = c("Mali","Brazil","Andorra"))
 ```
-
+**Central African Republic's name was too long to fit on the X axis so I showed Mali as a lower bound country example**
 4. (3 points) Although we can see which country has the highest life expectancy for the past 100 years, we don't know which countries have changed the most. What are the top 5 countries that have experienced the biggest improvement in life expectancy between 1920-2020?
 ```{r}
 life_expectancy %>% 
@@ -157,8 +158,9 @@ life_expectancy %>%
   theme_classic(base_family="Avenir")+
   theme(axis.text.x=element_text(size=8,angle=30,hjust=1),
         plot.title = element_text(size = 10, hjust = 0.5),
-        axis.title = element_text(size = 8))+
-  labs(title="Top Changes In Life Expectancy",
+        axis.title = element_text(size = 8),
+        legend.position = "none")+
+  labs(title="Top Changes In Life Expectancy from 1920 to 2020",
        x="Country",
        y="Change in Life Expectancy (Years)")
 ```
@@ -167,18 +169,19 @@ life_expectancy %>%
 ```{r}
 t_lifeexp %>% 
   filter(country=="Kuwait",year>=1920,year<=2020) %>% 
-  ggplot(aes(x=year, y=life_exp, color=country))+
+  ggplot(aes(x=year, y=life_exp, color=country, group=1))+
   geom_point()+
+  geom_line()+
   labs(title= "Change in Life Expectancy of Kuwait",
        x="Year",
        y="Life Expectnacy (Years)")+
   theme_classic(base_family="Avenir")+
   theme(axis.text.x=element_text(size=8,angle=30,hjust=1),
         plot.title = element_text(size = 10, hjust = 0.5),
-        axis.title = element_text(size = 8))+
+        axis.title = element_text(size = 8),
+        legend.position = "none")+
   scale_x_discrete(breaks = c(1920,1940,1960,1980,2000,2020))
 ```
-
 ## Population Growth
 6. (3 points) Which 5 countries have had the highest population growth over the past 100 years (1920-2020)?
 ```{r}
@@ -194,11 +197,14 @@ population %>%
 t_pop %>%
   filter(country=="India"|country=="China"|country=="Indonesia"|country=="United States"| country=="Pakistan",year>=1920,year<=2020) %>% 
   ggplot(aes(x=year,y=population, group=country,color=country))+
-    geom_point()+
+  geom_point()+
+  geom_line()+
   theme_classic(base_family="Avenir")+
-    labs(title="Change in Population 1920-2020",
+    labs(fill="Dose",
+      title="Change in Population 1920-2020",
        x="Years",
        y="Population")+
+  scale_fill_discrete(name="Countries")+
   theme(axis.text.x=element_text(size=8,angle=30,hjust=1),
         plot.title = element_text(size = 10, hjust = 0.5),
         axis.title = element_text(size = 8))+
@@ -231,8 +237,6 @@ t_income %>%
   scale_x_discrete(breaks = c(1920,1940,1960,1980,2000,2020))
 ```
 The 1979 energy crisis triggered by the Iranian Revolution caused a disruption in the global oil supply. Qatar and Brunei are two countries primarily export oil and their GDP suffered as a consequence of these events.
-
-
 9. (3 points) Create three new objects that restrict each data set (life expectancy, population, income) to the years 1920-2020. Hint: I suggest doing this with the long form of your data. Once this is done, merge all three data sets using the code I provide below. You may need to adjust the code depending on how you have named your objects. I called mine `life_expectancy_100`, `population_100`, and `income_100`. For some of you, learning these `joins` will be important for your project.  
 
 life_expectancy_100
