@@ -104,7 +104,7 @@ There are 250 individuals and 2 phenotypes represented in the data set. There ar
 ```{r}
 nmar(hyper)
 ```
-
+This displays the number of gene markers on each chromosome.
 **5. Please make an interactive genetic map of markers for the hypertension data.**
 ```{r}
 iplotMap(hyper)
@@ -115,7 +115,7 @@ iplotMap(hyper)
 plotMissing(hyper, main="")
 plotMissing(hyper,main="",reorder=1)
 ```
-Assuming ther portions of black on the graph are the positions with missing genomic data, that pattern shown is for individuals ~49-205 to have missing genomic data from a number of chromosomes based on there blood pressure phenotype. 
+Assuming the portions of black on the graph are the positions with missing genomic data, the pattern shown is for individuals ~49-205 to have missing genomic data from a number of chromosomes. 
 **7. Based on your answer from previous question, you probably noticed that there are gene markers without data. Please use the function `drop.nullmarkers` to remove markers that have no genotype data. After this, make a new summary to show the number of markers on each chromosome. How many gene markers were dropped? Where were the dropped markers located? Please use the data without nullmarkers for the following questions.**
 ```{r}
 newhyper<-drop.nullmarkers(hyper)
@@ -123,7 +123,13 @@ newhyper<-drop.nullmarkers(hyper)
 ```{r}
 summary(newhyper)
 ```
-
+```{r}
+nmar(newhyper)
+```
+```{r}
+nmar(hyper)
+```
+One gene marker from the 14th chromosome was dropped.
 **8. Please conduct single-QTL analysis and create a table to give the maximum LOD score on each chromosome based on their blood pressure phenotypes. Which gene marker has the higiest LOD score? Which chromosome contains the gene marker that has the highest LOD score? Then, creates an interactive chart with LOD curves from a genome scan for all chromosomes.**
 ```{r}
 newhyper<-calc.genoprob(newhyper,step=1)
@@ -143,6 +149,7 @@ summary(hyper.em, threshold=1)
 ```
 ```{r}
 hyper.em.plot<-iplotScanone(hyper.em, hyper, chr=c(1,2,4,5,6,15))
+hyper.em.plot
 ```
 The gene with the highest lod score is D4Mit164, The genotype BB of this marker increases the blood pressure phenotype by ~4-8 units.
 **10. Please save your interactive chart from Q9 as a html file `hyper_iplotScanone.html` and make sure your upload it to your github repository with your lab14 homework as well.**

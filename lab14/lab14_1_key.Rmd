@@ -215,7 +215,6 @@ results
 # Start by creating an empty data frame
 results <- data.frame(file_name = vector(mode = "character", length = length(data_files)),
                       count = vector(mode = "integer", length = length(data_files)))
-
 for (i in 1:length(data_files)){
   data0 <- read_csv(data_files[i])
   count <- nrow(data0)
@@ -266,7 +265,6 @@ for (i in 1:length(data_files3)){
       labs(title = data_files3[i], x = "longitude", y = "latitude")
   )
 }
-
 ```
 
 ### example 4: Looping over files for basic genetic analysis
@@ -312,8 +310,8 @@ GC_results
 ## Packages for next time  
 Please install packages below for part 2!  
 ```{r}
-install.packages("qtl")
-install.packages("qtlcharts")
+#install.packages("qtl")
+#install.packages("qtlcharts")
 ```
 
 ## That's it! Take a break and I will see you on Zoom!  

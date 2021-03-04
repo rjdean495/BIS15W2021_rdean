@@ -107,6 +107,7 @@ We first calculate the QTL genotype probabilities, given the observed marker dat
 sug <- calc.genoprob(sug, step=1)
 out.em <- scanone(sug)
 out.em2 <- scanone(sug, pheno.col=1:4)
+sug
 ```
 The output has “class” "scanone". The summary function is passed to the function summary.scanone, and gives the maximum LOD score on each chromosome.
 ```{r}
